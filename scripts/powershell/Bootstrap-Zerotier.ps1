@@ -42,7 +42,9 @@ else {
 # after installation, run as admin to join the network
 # zerotier-cli requires admin privileges
 if (-not $isAdmin) {
-    Start-Process powershell -Verb runAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`""
+    $scriptPath = "$env:TEMP\Bootstrap-Zerotier.ps1"
+    Invoke-RestMethod "https://raw.githubusercontent.com/theMyle/BlasterBot/main/scripts/Bootstrap-Zerotier.ps1" -OutFile $scriptPath
+    Start-Process powershell -Verb runAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$scriptPath`""
     exit 0
 }
 
