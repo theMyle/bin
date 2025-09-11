@@ -43,7 +43,7 @@ else {
 # zerotier-cli requires admin privileges
 if (-not $isAdmin) {
     $scriptPath = "$env:TEMP\Bootstrap-Zerotier.ps1"
-    Invoke-RestMethod "https://raw.githubusercontent.com/theMyle/BlasterBot/main/scripts/Bootstrap-Zerotier.ps1" -OutFile $scriptPath
+    Invoke-RestMethod "https://raw.githubusercontent.com/theMyle/bin/refs/heads/main/scripts/powershell/Bootstrap-Zerotier.ps1" -OutFile $scriptPath
     Start-Process powershell -Verb runAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$scriptPath`""
     exit 0
 }
